@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">picked</string>
+    <string name="log_button">log</string>
+    <string name="search_button">search</string>
 </resources>
