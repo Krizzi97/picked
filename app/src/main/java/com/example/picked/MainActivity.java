@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+        Timber.d("DEBUG: onCreate()");
     }
 
     @Override
