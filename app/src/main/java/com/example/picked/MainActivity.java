@@ -6,34 +6,34 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected String TAG = "MainActivity.java";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Timber.d(TAG,"DEBUG: onCreate()");
-
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     @Override
     protected void onStart()
     {
         super.onStart();
-        Timber.d(TAG,"DEBUG: onStart()");
+        Timber.d("DEBUG: onStart()");
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        Timber.d(TAG,"DEBUG: onResume()");
+        Timber.d("DEBUG: onResume()");
 
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        Timber.d(TAG,"DEBUG: onPause()");
+        Timber.d("DEBUG: onPause()");
 
     }
 
@@ -41,21 +41,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop()
     {
         super.onStop();
-        Timber.d(TAG,"DEBUG: onStop()");
+        Timber.d("DEBUG: onStop()");
     }
 
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
-        Timber.d(TAG,"DEBUG: onDestroy()");
+        Timber.d("DEBUG: onDestroy()");
     }
 
     @Override
     protected void onRestart()
     {
         super.onRestart();
-        Timber.d(TAG,"DEBUG: onRestart()");
+        Timber.d("DEBUG: onRestart()");
    }
 
 }
