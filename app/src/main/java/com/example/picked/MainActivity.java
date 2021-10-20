@@ -3,6 +3,7 @@ package com.example.picked;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import timber.log.Timber;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
@@ -25,10 +27,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Timber.d("DEBUG: onResume()");
-
     }
 
     @Override
