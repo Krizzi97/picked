@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/FrameLayout.xml" value="0.2708333333333333" />
         <entry key="app/src/main/res/layout/activity_fragment.xml" value="0.2864583333333333" />
+        <entry key="app/src/main/res/layout/activity_log.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.27239583333333334" />
         <entry key="app/src/main/res/layout/activity_start_screen.xml" value="0.2864583333333333" />

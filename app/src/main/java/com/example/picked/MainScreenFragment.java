@@ -36,7 +36,7 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
         final int viewId = view.getId();
 
         if (viewId == R.id.log_button) {
-            startActivity(new Intent(".MainScreenActivity"));
+            startActivity(new Intent(appContext, LogActivity.class));
         } else if (viewId == R.id.search_button) {
             // not implemented
         } else {

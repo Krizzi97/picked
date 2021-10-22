@@ -9,25 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
-        <activity
-            android:name=".MainScreenActivity"
-            android:exported="true" />
-        <!-- <activity -->
-        <!-- android:name=".MainActivity" -->
-        <!-- android:exported="true" /> -->
-        <activity
-            android:name=".StartScreenActivity"
-            android:exported="true">
+
+        <activity android:name=".MainScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LogActivity"
-            android:exported="true"
-            android:label="@string/title_activity_log"
-            android:theme="@style/Theme.Picked.NoActionBar" />
+        <activity android:name=".LogActivity" />
     </application>
 
 </manifest>
