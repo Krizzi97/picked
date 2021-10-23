@@ -13,9 +13,15 @@ import timber.log.Timber;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
-public class LogFragment extends Fragment implements View.OnClickListener {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class LogFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

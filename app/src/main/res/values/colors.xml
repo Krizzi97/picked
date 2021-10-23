@@ -8,4 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#56738678</color>
+    <color name="olive">#98BF64</color>
+    <color name="sage">#728C69</color>
+    <color name="seaweed">#354A21</color>
+    <color name="moss">#466D1D</color>
+    <color name="pickle">#597D35</color>
+    <color name="pistachio">#B2D3C2</color>
+    <color name="crocodile">#607D3B</color>
+    <color name="chartreuse">#B0FC38</color>
+    <color name="tea">#D0F0C0</color>
+    <color name="light_green">#B3E6B5</color>
+    <color name="emerald">#00A881</color>
+    <color name="yellow">#E88817</color>
+    <color name="brown">#9C5808</color>
 </resources>
