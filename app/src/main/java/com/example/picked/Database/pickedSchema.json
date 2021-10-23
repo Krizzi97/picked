@@ -1,0 +1,45 @@
+{
+  "logPlant": {
+    "region": [
+      "Midwest",
+      "Eastern Seaboard",
+      "Southeast"
+    ],
+    "season": [
+      "Early Spring",
+      "Mid-to-late Spring",
+      "Summer",
+      "Fall",
+      "Winter"
+    ],
+    "area": [
+      "Full sun",
+      "Near water",
+      "Partial shade"
+    ],
+    "part": [
+      "Greens",
+      "Shoots/Stalks",
+      "Underground vegetable",
+      "Fruit/Berry",
+      "Seed/Grain",
+      "Flower"
+    ],
+    "characteristics": {
+      "color": true,
+      "arrangement": true,
+      "shape": true,
+      "height": true,
+      "length": true
+    }
+  },
+
+  "savedPlant": {
+    "name": true,
+    "location": {
+      "city": true,
+      "state": true,
+      "zip": true
+    }
+  }
+}
