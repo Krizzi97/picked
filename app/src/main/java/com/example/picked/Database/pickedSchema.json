@@ -1,36 +1,29 @@
 {
-  "logPlant": {
-    "region": [
-      "Midwest",
-      "Eastern Seaboard",
-      "Southeast"
-    ],
-    "season": [
-      "Early Spring",
-      "Mid-to-late Spring",
-      "Summer",
-      "Fall",
-      "Winter"
-    ],
-    "area": [
-      "Full sun",
-      "Near water",
-      "Partial shade"
-    ],
-    "part": [
-      "Greens",
-      "Shoots/Stalks",
-      "Underground vegetable",
-      "Fruit/Berry",
-      "Seed/Grain",
-      "Flower"
-    ],
-    "characteristics": {
-      "color": true,
-      "arrangement": true,
-      "shape": true,
-      "height": true,
-      "length": true
+
+  "Plants": {
+    "apple fruit": {
+      "region" : "midwest",
+      "area" : "full sun",
+      "season": "fall",
+      "part" : "fruit"
+    },
+    "american persimmon fruit": {
+      "region" : "midwest",
+      "area" : "full sun",
+      "season" : "fall",
+      "part" : "fruit"
+    },
+    "burdock roots" : {
+      "region" : "midwest",
+      "area" : "full sun",
+      "season" : "fall",
+      "part" : "underground"
+    },
+    "angelica root" : {
+      "region": "midwest",
+      "area" : "near water",
+      "season" : "fall",
+      "part" : "underground"
     }
   },
 

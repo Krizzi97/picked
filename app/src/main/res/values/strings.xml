@@ -1,15 +1,58 @@
 <resources>
+    <array name="regions">Midwest, Eastern Seaboard, Southeast</array>
+    <array name="seasons">Early Spring, Mid-to-Late Spring, Summer, Fall, Winter</array>
+    <array name="areas">Full Sun, Near Water, Partial Shade</array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <array name="parts">Greens, Shoots/Stalks, Underground Vegetable, Fruit/Berry, Seed/Grain,
+        Flower
+    </array>
     <string name="app_name">picked</string>
+    <!-- Strings used for fragments for navigation -->
     <string name="log_button">log</string>
     <string name="search_button">search</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_log">LogActivity</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="characteristic">characteristic</string>
-    <string name="characteristic_description">some description of the characteristic here; some description of the characteristic here</string>
+    <string name="next">next</string>
+    <string name="previous">previous</string>
+    <string name="other">other</string>
+    <string name="submit">submit</string>
+
+    <!--  Picked Database arrays  -->
+    <string name="region_title">Regions</string>
+    <string name="region_description">Please select the region closets to where you have found your plant</string>
+    <string name="Midwest">midwest</string>
+    <string name="Eastern_Seaboard">eastern seaboard</string>
+    <string name="Southeast">southeast</string>
+
+    <string name="season_title">Seasons</string>
+    <string name="season_description">Please select the season that you are currently in</string>
+    <string name="Early_Spring">early spring</string>
+    <string name="Mid_to_Late_Spring">mid-to-late spring</string>
+    <string name="Summer">summer</string>
+    <string name="Fall">fall</string>
+    <string name="Winter">winter</string>
+
+    <string name="area_title">Areas</string>
+    <string name="area_description">Please select the predominant lighting/wetland environment you found the plant in</string>
+    <string name="Partial_Shade">partial shade</string>
+    <string name="Full_Sun">full sun</string>
+    <string name="Near_Water">near water</string>
+
+    <string name="part_title">Plant Parts</string>
+    <string name="part_description">What part of the plant are you logging?</string>
+    <string name="Greens">green</string>
+    <string name="Shoots">shoot</string>
+    <string name="Underground">underground</string>
+    <string name="Fruits">fruit</string>
+    <string name="Seeds">seed</string>
+    <string name="Flower">flower</string>
+
+    <!--  saved  -->
+    <string name="selected_region"> </string>
+    <string name="selected_area"> </string>
+    <string name="selected_season"> </string>
+    <string name="selected_part"> </string>
+
 </resources>

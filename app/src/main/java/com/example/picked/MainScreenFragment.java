@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import timber.log.Timber;
 
 import android.view.LayoutInflater;
@@ -36,7 +35,7 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
         final int viewId = view.getId();
 
         if (viewId == R.id.log_button) {
-            startActivity(new Intent(appContext, LogActivity.class));
+            startActivity(new Intent(appContext, RegionsActivity.class));
         } else if (viewId == R.id.search_button) {
             // not implemented
         } else {

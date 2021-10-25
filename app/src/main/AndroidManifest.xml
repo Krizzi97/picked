@@ -9,10 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
-
+        <activity
+            android:name=".PlantPartsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SeasonActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AreasActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegionsActivity"
+            android:exported="true" />
         <activity android:name=".MainScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

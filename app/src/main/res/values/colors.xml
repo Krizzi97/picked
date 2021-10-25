@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary">#ADDFB3</color>
+    <color name="secondary">#7B9E7F</color>
+    <color name="tertiary">#4A5E4C</color>
+    <color name="light">#B7EBBD</color>
+    <color name="compliment1">#916C63</color>
+    <color name="compliment2">#DEAEA2</color>
+    <color name="compliment3">#8F8091</color>
+    <color name="compliment4">#D8B8DE</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -19,6 +28,8 @@
     <color name="tea">#D0F0C0</color>
     <color name="light_green">#B3E6B5</color>
     <color name="emerald">#00A881</color>
-    <color name="yellow">#E88817</color>
+    <color name="yellow">#FBDB65</color>
+    <color name="yellow2">#BAA24A</color>
     <color name="brown">#9C5808</color>
+    <color name="brown2">#3B3317</color>
 </resources>
