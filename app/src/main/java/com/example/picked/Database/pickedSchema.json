@@ -1,25 +1,29 @@
 {
 
   "Plants": {
-    "apple fruit": {
+     "0" : {
+      "name" : "apple fruit",
       "region" : "midwest",
       "area" : "full sun",
       "season": "fall",
       "part" : "fruit"
     },
-    "american persimmon fruit": {
+     "1" : {
+      "name" : "american persimmon fruit",
       "region" : "midwest",
       "area" : "full sun",
       "season" : "fall",
       "part" : "fruit"
     },
-    "burdock roots" : {
+     "2" : {
+      "name" : "burdock roots",
       "region" : "midwest",
       "area" : "full sun",
       "season" : "fall",
       "part" : "underground"
     },
-    "angelica root" : {
+     "3" : {
+      "name" : "angelica root",
       "region": "midwest",
       "area" : "near water",
       "season" : "fall",

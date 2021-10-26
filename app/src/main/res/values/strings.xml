@@ -54,5 +54,7 @@
     <string name="selected_area"> </string>
     <string name="selected_season"> </string>
     <string name="selected_part"> </string>
+    <string name="selected_plant"> </string>
+    <string name="found_location"> </string>
 
 </resources>

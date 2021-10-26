@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
         <activity
+            android:name=".LoggingLocationService"
+            android:exported="true" />
+
+        <activity
+            android:name=".CreateNewPlantEntryActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".PlantPartsActivity"
             android:exported="true" />
         <activity
@@ -29,6 +37,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogActivity" />
+        <service
+            android:name=".LoggingLocationService"
+            android:foregroundServiceType="location" />
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

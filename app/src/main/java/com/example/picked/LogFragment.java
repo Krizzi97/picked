@@ -17,19 +17,39 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.picked.Database.PickedDatabase;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LogFragment extends Fragment implements View.OnClickListener{
+    Button option1;
+    Button option2;
+    Button option3;
+    Button option4;
+    TextView available;
+    List<Button> plant_names;
+    DatabaseReference reference;
+    SharedPreferences plant;
+    SharedPreferences.Editor editor;
+
+    // WARNING: THIS CODE IS NOT FLEXIBLE !!!
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_log, container, false);
 
         final Activity activity = requireActivity();
+
+        plant = activity.getSharedPreferences("plant", activity.MODE_PRIVATE);
+        editor = plant.edit();
 
         SharedPreferences regionPref = activity.getSharedPreferences("region", activity.MODE_PRIVATE);
         String region = regionPref.getString(getString(R.string.selected_region), "none selected");
@@ -43,15 +63,47 @@ public class LogFragment extends Fragment implements View.OnClickListener{
         SharedPreferences partPref = activity.getSharedPreferences("plant_part", activity.MODE_PRIVATE);
         String plant_part = partPref.getString(getString(R.string.selected_part), "none selected");
 
-        final TextView options = (TextView) v.findViewById(R.id.choices);
-//        options.setText(region + "\n" + season + "\n" + area + "\n" + plant_part);
+        available = (TextView) v.findViewById(R.id.available);
+        option1 = (Button) v.findViewById(R.id.plant1);
+        option2 = (Button) v.findViewById(R.id.plant2);
+        option3 = (Button) v.findViewById(R.id.plant3);
+        option4 = (Button) v.findViewById(R.id.plant4);
+        plant_names = new ArrayList<>();
+        plant_names.add(option1);
+        plant_names.add(option2);
+        plant_names.add(option3);
+        plant_names.add(option4);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        PickedDatabase queries = new PickedDatabase(database);
-        options.setText(queries.getMultiplePlants());
+        reference = FirebaseDatabase.getInstance().getReference().child("Plants");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChildren()) {
+                    available.setVisibility(View.GONE);
+                    int count = 0;
+                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                        plant_names.get(i).setVisibility(View.VISIBLE);
+                        plant_names.get(i).setText(snapshot.child(i + "").child("name").getValue().toString());
+                    }
+                }
+                else
+                {
+                    available.setText("No plant matches your description :(");
+                }
+            }
 
-//        Button submitButton = v.findViewById(R.id.SubmitButton);
-//        submitButton.setOnClickListener(this);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        Button submitButton = v.findViewById(R.id.submit);
+        submitButton.setOnClickListener(this);
+        option1.setOnClickListener(this);
+        option2.setOnClickListener(this);
+        option3.setOnClickListener(this);
+        option4.setOnClickListener(this);
 
         return v;
     }
@@ -62,8 +114,20 @@ public class LogFragment extends Fragment implements View.OnClickListener{
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
-        if (viewId == R.id.SubmitButton) {
-            startActivity(new Intent(appContext, LogActivity.class));
+        if (viewId == R.id.plant1) {
+            editor.putString(getString(R.string.selected_plant), option1.getText().toString());
+            editor.apply();
+        } else if (viewId == R.id.plant2) {
+            editor.putString(getString(R.string.selected_plant), option2.getText().toString());
+            editor.apply();
+        } else if (viewId == R.id.plant3) {
+            editor.putString(getString(R.string.selected_plant), option3.getText().toString());
+            editor.apply();
+        } else if (viewId == R.id.plant4) {
+            editor.putString(getString(R.string.selected_plant), option4.getText().toString());
+            editor.apply();
+        } else if (viewId == R.id.submit) {
+            startActivity(new Intent(appContext, CreateNewPlantEntryActivity.class));
         } else {
             Timber.e("Invalid button click");
         }
