@@ -40,40 +40,40 @@ public class EditPostsFragment extends Fragment implements View.OnClickListener 
         View v = inflater.inflate(R.layout.fragment_edit_posts, container, false);
         final Activity activity = requireActivity();
 
-        option1 = (TextView) v.findViewById(R.id.plant1);
-        option2 = (TextView) v.findViewById(R.id.plant2);
-        option3 = (TextView) v.findViewById(R.id.plant3);
-        option4 = (TextView) v.findViewById(R.id.plant4);
-        plant_names = new ArrayList<>();
-        plant_names.add(option1);
-        plant_names.add(option2);
-        plant_names.add(option3);
-        plant_names.add(option4);
+//        option1 = (TextView) v.findViewById(R.id.plant1);
+//        option2 = (TextView) v.findViewById(R.id.plant2);
+//        option3 = (TextView) v.findViewById(R.id.plant3);
+//        option4 = (TextView) v.findViewById(R.id.plant4);
+//        plant_names = new ArrayList<>();
+//        plant_names.add(option1);
+//        plant_names.add(option2);
+//        plant_names.add(option3);
+//        plant_names.add(option4);
 
-        SharedPreferences previousPostsPref = activity.getSharedPreferences("lastPost", activity.MODE_PRIVATE);
-        String previous = previousPostsPref.getString(getString(R.string.last_post), " ");
-        previousPosts = previous.split(",");
+//        SharedPreferences previousPostsPref = activity.getSharedPreferences("lastPost", activity.MODE_PRIVATE);
+//        String previous = previousPostsPref.getString(getString(R.string.last_post), " ");
+//        previousPosts = previous.split(",");
+//
+//        reference = FirebaseDatabase.getInstance().getReference().child("savedPlant");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.hasChildren()) {
+//                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+//                        plant_names.get(i).setVisibility(View.VISIBLE);
+//                        plant_names.get(i).setText(snapshot.child("name").getKey());
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
-        reference = FirebaseDatabase.getInstance().getReference().child("savedPlant");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChildren()) {
-                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                        plant_names.get(i).setVisibility(View.VISIBLE);
-                        plant_names.get(i).setText(snapshot.child("name").getKey());
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        Button homeButton = v.findViewById(R.id.home);
-        homeButton.setOnClickListener(this);
+//        Button homeButton = v.findViewById(R.id.home);
+//        homeButton.setOnClickListener(this);
 
         return v;
     }
@@ -84,10 +84,10 @@ public class EditPostsFragment extends Fragment implements View.OnClickListener 
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
-        if (viewId == R.id.home) {
-            startActivity(new Intent(appContext, MainScreenActivity.class));
-        } else {
-            Timber.e("Invalid button click");
-        }
+//        if (viewId == R.id.home) {
+//            startActivity(new Intent(appContext, MainScreenActivity.class));
+//        } else {
+//            Timber.e("Invalid button click");
+//        }
     }
 }
