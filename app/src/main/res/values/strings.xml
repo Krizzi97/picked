@@ -56,5 +56,10 @@
     <string name="selected_part"> </string>
     <string name="selected_plant"> </string>
     <string name="found_location"> </string>
+    <string name="last_post"> </string>
+    <string name="title_activity_edit_posts">EditPostsActivity</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

@@ -1,11 +1,13 @@
 package com.example.picked;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import timber.log.Timber;
 
@@ -13,6 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.nio.charset.Charset;
+import java.util.Random;
 
 public class MainScreenFragment extends Fragment implements View.OnClickListener {
 

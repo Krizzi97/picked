@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.picked.Database.PickedDatabase;
+import com.example.picked.Database.PostPlant;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,10 +33,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class CreateNewPlantEntryFragment extends Fragment implements View.OnClickListener{
     DatabaseReference reference;
     TextView located;
+    String plant;
     // WARNING: THIS CODE IS NOT FLEXIBLE !!!
 
 
@@ -44,8 +49,11 @@ public class CreateNewPlantEntryFragment extends Fragment implements View.OnClic
 
         final Activity activity = requireActivity();
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        reference = database.getReference("savedPlant");
+
         SharedPreferences plantPref = activity.getSharedPreferences("plant", activity.MODE_PRIVATE);
-        String plant = plantPref.getString(getString(R.string.selected_plant), " ");
+        plant = plantPref.getString(getString(R.string.selected_plant), " ");
 
         located = (TextView) v.findViewById(R.id.location);
         TextView selected = (TextView) v.findViewById(R.id.name);
@@ -65,17 +73,37 @@ public class CreateNewPlantEntryFragment extends Fragment implements View.OnClic
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
-        SharedPreferences location = activity.getSharedPreferences("location", activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = location.edit();
-
         if (viewId == R.id.find_me) {
-            String found_location = "Columbus,OH,43210";
-            located.setText(found_location);
-            editor.putString(getString(R.string.found_location), found_location);
+            // LoggingLocationServiceActivity started here
+
+            SharedPreferences location = activity.getSharedPreferences("location", activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = location.edit();
+            String address = "Columbus,OH,43210";
+            located.setText(address);
+            editor.putString(getString(R.string.found_location), address);
             editor.apply();
         } else if (viewId == R.id.submit) {
-            Toast.makeText(appContext, "SUCCESS!!", Toast.LENGTH_LONG);
-            startActivity(new Intent(appContext, MainScreenActivity.class));
+
+            SharedPreferences locationPref = activity.getSharedPreferences("location", activity.MODE_PRIVATE);
+            String savedLocation = locationPref.getString(getString(R.string.found_location), " ");
+            String[] address = savedLocation.split(",");
+
+            SharedPreferences previousPostsPref = activity.getSharedPreferences("lastPost", activity.MODE_PRIVATE);
+            String previousPosts = previousPostsPref.getString(getString(R.string.last_post), " ");
+
+            // simplify with PostPlant.class
+            DatabaseReference newPost = reference.push();
+            newPost.child("name").setValue(plant);
+            newPost.child("location").child("city").setValue(address[0]);
+            newPost.child("location").child("state").setValue(address[1]);
+            newPost.child("location").child("zip").setValue(address[2]);
+
+            SharedPreferences lastPost = activity.getSharedPreferences("lastPost", activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = lastPost.edit();
+            editor.putString(getString(R.string.last_post), previousPosts + "," + newPost.getKey());
+            editor.apply();
+
+            startActivity(new Intent(appContext, EditPostsActivity.class));
         } else {
             Timber.e("Invalid button click");
         }

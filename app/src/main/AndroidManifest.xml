@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
         <activity
+            android:name=".EditPostsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_edit_posts"
+            android:theme="@style/Theme.Picked.NoActionBar" />
+        <activity
             android:name=".LoggingLocationService"
             android:exported="true" />
-
         <activity
             android:name=".CreateNewPlantEntryActivity"
             android:exported="true" />
-
         <activity
             android:name=".PlantPartsActivity"
             android:exported="true" />
@@ -37,6 +40,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogActivity" />
+
         <service
             android:name=".LoggingLocationService"
             android:foregroundServiceType="location" />

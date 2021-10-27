@@ -10,25 +10,26 @@ import java.util.Map;
 
 public class PostPlant {
 
-//    public Plants type;
-//    public Image image;
-//    public Location location;
-//
-//    public PostPlant() {}
-//
-//    public PostPlant(Plants type, Image image, Location location) {
-//        this.type = type;
-//        this.image = image;
-//        this.location = location;
-//    }
-//
-//    @Exclude
-//    public Map<String, Object> toMap() {
-//        HashMap<String, Object> result = new HashMap<>();
-//        result.put("type", type);
-//        result.put("image", image);
-//        result.put("location", location);
-//
-//        return result;
-//    }
+    public String name;
+    public String city;
+    public String state;
+    public String zip;
+
+    public PostPlant(String name, String city, String state, String zip) {
+        this.name = name;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
+    @Exclude
+    public Map<String, String> toMap() {
+        HashMap<String, String> result = new HashMap<>();
+        result.put("name", name);
+        result.put("city", city);
+        result.put("state", state);
+        result.put("zip", zip);
+
+        return result;
+    }
 }
