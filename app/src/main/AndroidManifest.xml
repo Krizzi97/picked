@@ -40,6 +40,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogActivity" />
+        <activity android:name=".NameSearchActivity" />
+        <activity android:name=".LocationSearchActivity" />
+        <activity android:name=".TypeSearchActivity" />
+        <activity android:name=".SearchActivity" />
 
 <!--        <service-->
 <!--            android:name=".LocationActivity"-->

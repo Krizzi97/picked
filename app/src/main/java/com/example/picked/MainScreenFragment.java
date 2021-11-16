@@ -42,7 +42,7 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
         if (viewId == R.id.log_button) {
             startActivity(new Intent(appContext, RegionsActivity.class));
         } else if (viewId == R.id.search_button) {
-            // not implemented
+            startActivity(new Intent(appContext, SearchActivity.class));
         } else {
             Timber.e("Invalid button click");
         }

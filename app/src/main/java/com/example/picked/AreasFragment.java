@@ -14,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.picked.R;
+import com.example.picked.SeasonActivity;
+
 import java.util.List;
 
 public class AreasFragment extends Fragment implements View.OnClickListener{
