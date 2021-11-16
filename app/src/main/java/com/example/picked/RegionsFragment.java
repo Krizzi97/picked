@@ -17,29 +17,26 @@ import android.widget.Button;
 
 public class RegionsFragment extends Fragment implements View.OnClickListener{
 
-    enum region{
-       Midwest,
-       EasternSeaboard,
-       Southeast
-    }
-
+    private int selected;
+    private int[] allButtons = new int[3];
+    private View view;
+    private Button submitButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_regions, container,false);
+        view = inflater.inflate(R.layout.fragment_regions, container,false);
 
         Button midwestButton = view.findViewById(R.id.MidwestButton);
-        midwestButton.setFocusable(true);
         midwestButton.setOnClickListener(this);
+        allButtons[0] = midwestButton.getId();
         Button seaboardButton = view.findViewById(R.id.SeaboardButton);
-        seaboardButton.setFocusable(true);
         seaboardButton.setOnClickListener(this);
+        allButtons[1] = seaboardButton.getId();
         Button southeastButton = view.findViewById(R.id.SouthEastButton);
         southeastButton.setOnClickListener(this);
-        Button otherButton = view.findViewById(R.id.OtherButton);
-        otherButton.setOnClickListener(this);
-        Button submitButton = view.findViewById(R.id.SubmitButton);
+        allButtons[2] = southeastButton.getId();
+        submitButton = view.findViewById(R.id.SubmitButton);
         submitButton.setOnClickListener(this);
 
         return view;
@@ -53,22 +50,37 @@ public class RegionsFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sharedPref = activity.getSharedPreferences("region", activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
+        selected = viewId;
+        view.setSelected(true);
+        DeselectButtons();
+
         if (viewId == R.id.MidwestButton) {
-            editor.putString(getString(R.string.selected_region), region.Midwest.toString());
+            editor.putString(getString(R.string.selected_region), "midwest");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SeaboardButton) {
-            editor.putString(getString(R.string.selected_region), region.EasternSeaboard.toString());
+            editor.putString(getString(R.string.selected_region), "seaboard");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SouthEastButton) {
-            editor.putString(getString(R.string.selected_region), region.Southeast.toString());
+            editor.putString(getString(R.string.selected_region), "south east");
             editor.apply();
-        } else if (viewId == R.id.OtherButton) {
-            editor.putString(getString(R.string.selected_region), "other");
-            editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SubmitButton) {
             startActivity(new Intent(appContext, AreasActivity.class));
         } else {
             Timber.e("Invalid button click");
+        }
+    }
+
+    // source: https://stackoverflow.com/a/2060708
+    private void DeselectButtons(){
+        for (int button : allButtons)
+        {
+            if (button != selected)
+            {
+                view.findViewById(button).setSelected(false);
+            }
         }
     }
 }

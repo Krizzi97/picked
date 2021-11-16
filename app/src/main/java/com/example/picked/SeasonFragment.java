@@ -17,32 +17,33 @@ import android.widget.Button;
 import java.util.List;
 
 public class SeasonFragment extends Fragment implements View.OnClickListener{
-    enum seasons{
-        EarlySpring,
-        MidToLateSpring,
-        Summer,
-        Fall,
-        Winter
-    }
+
+    private int selected;
+    private int[] allButtons = new int[5];
+    private View view;
+    private Button submitButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_season, container,false);
+        view = inflater.inflate(R.layout.fragment_season, container,false);
 
         Button EarlySpringButton = view.findViewById(R.id.EarlySpringButton);
         EarlySpringButton.setOnClickListener(this);
+        allButtons[0] = EarlySpringButton.getId();
         Button MidLateSpringButton = view.findViewById(R.id.MidtoLateSpringButton);
         MidLateSpringButton.setOnClickListener(this);
+        allButtons[1] = MidLateSpringButton.getId();
         Button SummerButton = view.findViewById(R.id.SummerButton);
         SummerButton.setOnClickListener(this);
+        allButtons[2] = SummerButton.getId();
         Button FallButton = view.findViewById(R.id.FallButton);
         FallButton.setOnClickListener(this);
+        allButtons[3] = FallButton.getId();
         Button WinterButton = view.findViewById(R.id.WinterButton);
         WinterButton.setOnClickListener(this);
-        Button otherButton = view.findViewById(R.id.OtherButton);
-        otherButton.setOnClickListener(this);
-        Button submitButton = view.findViewById(R.id.SubmitButton);
+        allButtons[4] = WinterButton.getId();
+        submitButton = view.findViewById(R.id.SubmitButton);
         submitButton.setOnClickListener(this);
 
         return view;
@@ -56,28 +57,45 @@ public class SeasonFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sharedPref = activity.getSharedPreferences("season", activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
+        selected = viewId;
+        view.setSelected(true);
+        DeselectButtons();
+
         if (viewId == R.id.EarlySpringButton) {
-            editor.putString(getString(R.string.selected_season), seasons.EarlySpring.toString());
+            editor.putString(getString(R.string.selected_season), "early spring");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.MidtoLateSpringButton) {
-            editor.putString(getString(R.string.selected_season), seasons.MidToLateSpring.toString());
+            editor.putString(getString(R.string.selected_season), "mid-to-late spring");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SummerButton) {
-            editor.putString(getString(R.string.selected_season), seasons.Summer.toString());
+            editor.putString(getString(R.string.selected_season), "summer");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.FallButton) {
-            editor.putString(getString(R.string.selected_season), seasons.Fall.toString());
+            editor.putString(getString(R.string.selected_season), "fall");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.WinterButton) {
-            editor.putString(getString(R.string.selected_season), seasons.Winter.toString());
+            editor.putString(getString(R.string.selected_season), "winter");
             editor.apply();
-        } else if (viewId == R.id.OtherButton) {
-            editor.putString(getString(R.string.selected_season), "other");
-            editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SubmitButton) {
             startActivity(new Intent(appContext, PlantPartsActivity.class));
         } else {
             Timber.e("Invalid button click");
+        }
+    }
+
+    // source: https://stackoverflow.com/a/2060708
+    private void DeselectButtons(){
+        for (int button : allButtons)
+        {
+            if (button != selected)
+            {
+                view.findViewById(button).setSelected(false);
+            }
         }
     }
 }

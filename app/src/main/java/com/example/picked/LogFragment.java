@@ -34,17 +34,21 @@ public class LogFragment extends Fragment implements View.OnClickListener{
     Button option2;
     Button option3;
     Button option4;
+    Button submitButton;
     TextView available;
     List<Button> plant_names;
     DatabaseReference reference;
     SharedPreferences plant;
     SharedPreferences.Editor editor;
+    private int selected;
+    private View v;
 
     // WARNING: THIS CODE IS NOT FLEXIBLE !!!
+    // implement RecyclerView and thumbnails
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_log, container, false);
+        v = inflater.inflate(R.layout.fragment_log, container, false);
 
         final Activity activity = requireActivity();
 
@@ -78,16 +82,25 @@ public class LogFragment extends Fragment implements View.OnClickListener{
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int choice = 0;
                 if (snapshot.hasChildren()) {
                     available.setVisibility(View.GONE);
-                    int count = 0;
                     for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                        plant_names.get(i).setVisibility(View.VISIBLE);
-                        plant_names.get(i).setText(snapshot.child(i + "").child("name").getValue().toString());
+                        if (snapshot.child(i + "").child("region").getValue().toString().equalsIgnoreCase(region)
+                                && snapshot.child(i + "").child("area").getValue().toString().equalsIgnoreCase(area)
+                                && snapshot.child(i + "").child("season").getValue().toString().equalsIgnoreCase(season)
+                                && snapshot.child(i + "").child("part").getValue().toString().equalsIgnoreCase(plant_part))
+                        {
+                            plant_names.get(choice).setVisibility(View.VISIBLE);
+                            plant_names.get(choice).setText(snapshot.child(i + "").child("name").getValue().toString());
+                            choice++;
+                        }
                     }
                 }
-                else
+
+                if (choice == 0  || !snapshot.hasChildren())
                 {
+                    available.setVisibility(View.VISIBLE);
                     available.setText("No plant matches your description :(");
                 }
             }
@@ -98,8 +111,10 @@ public class LogFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        Button submitButton = v.findViewById(R.id.submit);
+        submitButton = v.findViewById(R.id.submit);
         submitButton.setOnClickListener(this);
+        Button homeButton = v.findViewById(R.id.home);
+        homeButton.setOnClickListener(this);
         option1.setOnClickListener(this);
         option2.setOnClickListener(this);
         option3.setOnClickListener(this);
@@ -114,22 +129,43 @@ public class LogFragment extends Fragment implements View.OnClickListener{
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
+        selected = viewId;
+        view.setSelected(true);
+        DeselectButtons();
+
         if (viewId == R.id.plant1) {
             editor.putString(getString(R.string.selected_plant), option1.getText().toString());
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.plant2) {
             editor.putString(getString(R.string.selected_plant), option2.getText().toString());
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.plant3) {
             editor.putString(getString(R.string.selected_plant), option3.getText().toString());
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.plant4) {
             editor.putString(getString(R.string.selected_plant), option4.getText().toString());
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.submit) {
-            startActivity(new Intent(appContext, CreateNewPlantEntryActivity.class));
+            startActivity(new Intent(appContext, LocationActivity.class));
+        } else if (viewId == R.id.home) {
+            startActivity(new Intent(appContext, MainScreenActivity.class));
         } else {
             Timber.e("Invalid button click");
+        }
+    }
+
+    // source: https://stackoverflow.com/a/2060708
+    private void DeselectButtons(){
+        for (Button button : plant_names)
+        {
+            if (button.getId() != selected)
+            {
+                v.findViewById(button.getId()).setSelected(false);
+            }
         }
     }
 }

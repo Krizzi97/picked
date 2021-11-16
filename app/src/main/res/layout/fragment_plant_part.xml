@@ -40,144 +40,125 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PlantPart" />
+        app:layout_constraintTop_toBottomOf="@id/PlantPart" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/GreenButton"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/generic_button2"
-        android:fontFamily="@font/quicksand_semibold"
-        android:text="@string/Greens"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@id/ShootButton"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/ShootButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:fontFamily="@font/quicksand_semibold"
-        android:text="@string/Shoots"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@id/FruitButton"
-        app:layout_constraintStart_toEndOf="@id/GreenButton"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/UndergroundButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:fontFamily="@font/quicksand_semibold"
-        android:text="@string/Underground"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ShootButton" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/GreenButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/generic_button2"
+                android:fontFamily="@font/quicksand_semibold"
+                android:text="@string/Greens"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/FruitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:text="@string/Fruits"
-        android:textSize="30sp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/quicksand_semibold"
-        app:layout_constraintStart_toEndOf="@id/ShootButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ShootButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/generic_button2"
+                android:fontFamily="@font/quicksand_semibold"
+                android:text="@string/Shoots"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/GreenButton" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/SeedsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:text="@string/Seeds"
-        android:textSize="30sp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/quicksand_semibold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/FlowerButton"
-        app:layout_constraintTop_toBottomOf="@+id/UndergroundButton" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/UndergroundButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/generic_button2"
+                android:fontFamily="@font/quicksand_semibold"
+                android:text="@string/Underground"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ShootButton" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/FlowerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:text="@string/Flower"
-        android:textSize="30sp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/quicksand_semibold"
-        app:layout_constraintEnd_toStartOf="@id/SeedsButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UndergroundButton" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/FruitButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/generic_button2"
+                android:text="@string/Fruits"
+                android:textSize="30sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quicksand_semibold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/UndergroundButton" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/SeedsButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/generic_button2"
+                android:text="@string/Seeds"
+                android:textSize="30sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quicksand_semibold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/FruitButton" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/OtherButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:text="@string/other"
-        android:textSize="30sp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/quicksand_semibold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FlowerButton" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/FlowerButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/generic_button2"
+                android:text="@string/Flower"
+                android:textSize="30sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quicksand_semibold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/SeedsButton" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/SubmitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button3"
-        android:text="@string/submit"
-        android:textSize="30sp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/quicksand_semibold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OtherButton" />
-
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:visibility="invisible"
+                android:id="@+id/SubmitButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/generic_button3"
+                android:text="@string/submit"
+                android:textSize="30sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quicksand_semibold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/FlowerButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

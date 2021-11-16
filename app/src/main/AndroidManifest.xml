@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
         <activity
+            android:name=".LocationActivity"
+            android:exported="true" />
+        <activity
             android:name=".EditPostsActivity"
             android:exported="true"
             android:label="@string/title_activity_edit_posts"
             android:theme="@style/Theme.Picked.NoActionBar" />
-        <activity
-            android:name=".LoggingLocationService"
-            android:exported="true" />
         <activity
             android:name=".CreateNewPlantEntryActivity"
             android:exported="true" />
@@ -41,11 +41,11 @@
         </activity>
         <activity android:name=".LogActivity" />
 
-        <service
-            android:name=".LoggingLocationService"
-            android:foregroundServiceType="location" />
+<!--        <service-->
+<!--            android:name=".LocationActivity"-->
+<!--            android:foregroundServiceType="location" />-->
     </application>
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

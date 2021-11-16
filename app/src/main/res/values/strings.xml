@@ -59,7 +59,13 @@
     <string name="last_post"> </string>
     <string name="title_activity_edit_posts">EditPostsActivity</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!--    https://github.com/android/permissions-samples/blob/main/RuntimePermissionsBasic/Application/src/main/res/values/strings.xml -->
+    <string name="location_unavailable"><b>Location could not be accessed.</b>\nThis occurs when the location is not available (for example it is already in use) or if the system has denied access (for example when location access has been disabled).</string>
+    <string name="location_access_required">Location access is required to get location.</string>
+    <string name="ok">OK</string>
+    <string name="location_permission_not_available">Permission is not available. Requesting location permission.</string>
+    <string name="location_permission_available">Permission is available. Starting preview.</string>
+    <string name="location_permission_granted">Permission was granted. Starting preview.</string>
+    <string name="location_permission_denied">Permission request was denied.</string>
 
 </resources>

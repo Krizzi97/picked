@@ -121,21 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/FallButton" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/OtherButton"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/generic_button2"
-        android:text="@string/other"
-        android:textSize="30sp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/quicksand_semibold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WinterButton" />
-
-    <androidx.appcompat.widget.AppCompatButton
+        android:visibility="invisible"
         android:id="@+id/SubmitButton"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -148,7 +134,7 @@
         android:fontFamily="@font/quicksand_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OtherButton" />
+        app:layout_constraintTop_toBottomOf="@+id/WinterButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,35 +17,36 @@ import android.widget.Button;
 import java.util.List;
 
 public class PlantPartFragment extends Fragment implements View.OnClickListener{
-    enum parts{
-        Greens,
-        Fruits,
-        Seeds,
-        Flower,
-        Underground,
-        Shoots
-    }
+
+    private int selected;
+    private int[] allButtons = new int[6];
+    private View view;
+    private Button submitButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_plant_part, container,false);
+        view = inflater.inflate(R.layout.fragment_plant_part, container,false);
 
         Button GreensButton = view.findViewById(R.id.GreenButton);
         GreensButton.setOnClickListener(this);
+        allButtons[0] = GreensButton.getId();
         Button FruitButton = view.findViewById(R.id.FruitButton);
         FruitButton.setOnClickListener(this);
+        allButtons[1] = FruitButton.getId();
         Button SeedButton = view.findViewById(R.id.SeedsButton);
         SeedButton.setOnClickListener(this);
+        allButtons[2] = SeedButton.getId();
         Button FlowerButton = view.findViewById(R.id.FlowerButton);
         FlowerButton.setOnClickListener(this);
+        allButtons[3] = FlowerButton.getId();
         Button UndergroundButton = view.findViewById(R.id.UndergroundButton);
         UndergroundButton.setOnClickListener(this);
+        allButtons[4] = UndergroundButton.getId();
         Button ShootButton = view.findViewById(R.id.ShootButton);
         ShootButton.setOnClickListener(this);
-        Button otherButton = view.findViewById(R.id.OtherButton);
-        otherButton.setOnClickListener(this);
-        Button submitButton = view.findViewById(R.id.SubmitButton);
+        allButtons[5] = ShootButton.getId();
+        submitButton = view.findViewById(R.id.SubmitButton);
         submitButton.setOnClickListener(this);
 
         return view;
@@ -59,31 +60,49 @@ public class PlantPartFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sharedPref = activity.getSharedPreferences("plant_part", activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
+        selected = viewId;
+        view.setSelected(true);
+        DeselectButtons();
+
         if (viewId == R.id.GreenButton) {
-            editor.putString(getString(R.string.selected_part), parts.Greens.toString());
+            editor.putString(getString(R.string.selected_part), "green");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.FruitButton) {
-            editor.putString(getString(R.string.selected_part), parts.Fruits.toString());
+            editor.putString(getString(R.string.selected_part), "fruit");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.FlowerButton) {
-            editor.putString(getString(R.string.selected_part), parts.Flower.toString());
+            editor.putString(getString(R.string.selected_part), "flower");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SeedsButton) {
-            editor.putString(getString(R.string.selected_part), parts.Seeds.toString());
+            editor.putString(getString(R.string.selected_part), "seed");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.ShootButton) {
-            editor.putString(getString(R.string.selected_part), parts.Shoots.toString());
+            editor.putString(getString(R.string.selected_part), "shoot");
             editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.UndergroundButton) {
-            editor.putString(getString(R.string.selected_part), parts.Underground.toString());
+            editor.putString(getString(R.string.selected_part), "underground");
             editor.apply();
-        } else if (viewId == R.id.OtherButton) {
-            editor.putString(getString(R.string.selected_part), "other");
-            editor.apply();
+            submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SubmitButton) {
             startActivity(new Intent(appContext, LogActivity.class));
         } else {
             Timber.e("Invalid button click");
+        }
+    }
+
+    // source: https://stackoverflow.com/a/2060708
+    private void DeselectButtons(){
+        for (int button : allButtons)
+        {
+            if (button != selected)
+            {
+                view.findViewById(button).setSelected(false);
+            }
         }
     }
 }
