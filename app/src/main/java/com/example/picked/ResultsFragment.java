@@ -113,6 +113,10 @@ public class ResultsFragment extends Fragment {
                                break;
                            }
                        }
+                       else
+                       {
+                           break;
+                       }
                    }
                }
                if (!snapshot.hasChildren() || count == 0) {
