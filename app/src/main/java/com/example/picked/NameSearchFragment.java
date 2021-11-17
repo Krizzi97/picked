@@ -49,7 +49,7 @@ public class NameSearchFragment extends Fragment implements View.OnClickListener
             // When they press submit, save the string in shared preferences and find matches in database
             //editor.putString("name", name);
             editor.commit();
-        }  else {
+        } else {
             Timber.e("Invalid button click");
         }
     }
