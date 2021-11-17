@@ -2,7 +2,6 @@ package com.example.picked;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import timber.log.Timber;
 
-public class LocationSearchFragment extends Fragment implements View.OnClickListener{
+public class LocationSearchCurrentFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,9 +34,9 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
         final int viewId = view.getId();
 
         if (viewId == R.id.user_location) {
-            startActivity(new Intent(appContext, LocationSearchCurrentActivity.class));
+            // Not implemented yet
         } else if (viewId == R.id.input_location) {
-            startActivity(new Intent(appContext, LocationSearchInputActivity.class));
+            // Not implemented yet
         } else {
             Timber.e("Invalid button click");
         }

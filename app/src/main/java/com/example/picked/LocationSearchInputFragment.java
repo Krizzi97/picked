@@ -8,22 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import timber.log.Timber;
 
-public class LocationSearchFragment extends Fragment implements View.OnClickListener{
+public class LocationSearchInputFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search_location, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_location_input, container, false);
 
-        Button currentLocation = view.findViewById(R.id.user_location);
-        currentLocation.setOnClickListener(this);
-        Button inputLocation = view.findViewById(R.id.input_location);
-        inputLocation.setOnClickListener(this);
+        EditText nameInput = (EditText) view.findViewById(R.id.txt_box);
+        nameInput.setOnClickListener(this);
+        Button submitButton = view.findViewById(R.id.SubmitButton);
+        submitButton.setOnClickListener(this);
 
         return view;
     }
@@ -35,7 +36,7 @@ public class LocationSearchFragment extends Fragment implements View.OnClickList
         final int viewId = view.getId();
 
         if (viewId == R.id.user_location) {
-            startActivity(new Intent(appContext, LocationSearchCurrentActivity.class));
+            // ya
         } else if (viewId == R.id.input_location) {
             startActivity(new Intent(appContext, LocationSearchInputActivity.class));
         } else {

@@ -44,8 +44,11 @@
         <activity android:name=".LocationSearchActivity" />
         <activity android:name=".TypeSearchActivity" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".LocationSearchCurrentActivity" />
+        <activity android:name=".LocationSearchInputActivity" />
 
-<!--        <service-->
+
+        <!--        <service-->
 <!--            android:name=".LocationActivity"-->
 <!--            android:foregroundServiceType="location" />-->
     </application>
