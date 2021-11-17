@@ -32,11 +32,5 @@
   },
 
   "savedPlant": {
-    "name": true,
-    "location": {
-      "city": true,
-      "state": true,
-      "zip": true
-    }
   }
 }

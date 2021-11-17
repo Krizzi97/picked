@@ -88,7 +88,7 @@ public class TypeSearchFragment extends Fragment implements View.OnClickListener
             editor.apply();
             submitButton.setVisibility(View.VISIBLE);
         } else if (viewId == R.id.SubmitButton) {
-            // Query selected part with list of matching entries
+            startActivity(new Intent(appContext, TypeResultsActivity.class));
         } else {
             Timber.e("Invalid button click");
         }

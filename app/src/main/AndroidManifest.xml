@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
         <activity
-            android:name=".ResultsActivity"
+            android:name=".TypeResultsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NameResultsActivity"
             android:exported="true" />
         <activity
             android:name=".LocationActivity"
@@ -49,7 +52,7 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".LocationSearchCurrentActivity" />
         <activity android:name=".LocationSearchInputActivity" />
-</application>
+    </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 

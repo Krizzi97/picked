@@ -1,16 +1,20 @@
 package com.example.picked;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import timber.log.Timber;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,14 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
 
-public class ResultsFragment extends Fragment {
+public class NameResultsFragment extends Fragment implements View.OnClickListener{
 
     DatabaseReference reference;
     String name;
-    String search;
     TextView noResults;
     TextView name1;
     TextView name2;
@@ -50,9 +51,12 @@ public class ResultsFragment extends Fragment {
    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View v = inflater.inflate(R.layout.fragment_results, container, false);
+       View v = inflater.inflate(R.layout.fragment_name_results, container, false);
 
        final Activity activity = requireActivity();
+
+       Button homeButton = v.findViewById(R.id.home);
+       homeButton.setOnClickListener(this);
 
        noResults = (TextView) v.findViewById(R.id.no_results);
 
@@ -86,9 +90,6 @@ public class ResultsFragment extends Fragment {
        plant_locations.add(location3);
        plant_locations.add(location4);
 
-       SharedPreferences searchPref = activity.getSharedPreferences("search_on", activity.MODE_PRIVATE);
-       search = searchPref.getString(getString(R.string.searched_on), "none selected");
-
        SharedPreferences namePref = activity.getSharedPreferences("name_search", activity.MODE_PRIVATE);
        name = namePref.getString(getString(R.string.searched_name), "none selected");
 
@@ -99,7 +100,6 @@ public class ResultsFragment extends Fragment {
                int count = 0;
                if (snapshot.hasChildren()) {
                    for (DataSnapshot subSnap : snapshot.getChildren()) {
-                       //if ()
                        if (subSnap.child("name").getValue().toString().contains(name)) {
                            if (count < plant_cards.size()) {
                                plant_cards.get(count).setVisibility(View.VISIBLE);
@@ -112,10 +112,6 @@ public class ResultsFragment extends Fragment {
                            {
                                break;
                            }
-                       }
-                       else
-                       {
-                           break;
                        }
                    }
                }
@@ -131,5 +127,17 @@ public class ResultsFragment extends Fragment {
        });
 
        return v;
+    }
+
+    @Override
+    public void onClick(View view) {
+        final Activity activity = requireActivity();
+        final Context appContext = activity.getApplicationContext();
+        final int viewId = view.getId();
+        if (viewId == R.id.home) {
+          startActivity(new Intent(appContext, MainScreenActivity.class));
+        } else {
+            Timber.e("Invalid button click");
+        }
     }
 }

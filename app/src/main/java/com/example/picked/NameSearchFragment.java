@@ -44,18 +44,14 @@ public class NameSearchFragment extends Fragment implements View.OnClickListener
 
         SharedPreferences sharedName= activity.getSharedPreferences("name_search", activity.MODE_PRIVATE);
         SharedPreferences.Editor nameEditor = sharedName.edit();
-        SharedPreferences sharedSearch = activity.getSharedPreferences("search_on", activity.MODE_PRIVATE);
-        SharedPreferences.Editor searchEditor = sharedSearch.edit();
 
         //setName(this, );
         if (viewId == R.id.SubmitButton) {
 //             When they press submit, save the string in shared preferences and find matches in database
             nameEditor.putString(getString(R.string.searched_name), nameInput.getText().toString().toLowerCase(Locale.ROOT));
             nameEditor.commit();
-            searchEditor.putString(getString(R.string.searched_on), "name");
-            searchEditor.commit();
 
-            startActivity(new Intent(appContext, ResultsActivity.class));
+            startActivity(new Intent(appContext, NameResultsActivity.class));
         } else {
             Timber.e("Invalid button click");
         }
