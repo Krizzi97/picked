@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import java.io.StringReader;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -41,22 +42,28 @@ public class NameSearchFragment extends Fragment implements View.OnClickListener
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
-        SharedPreferences sharedPref = activity.getSharedPreferences("name_search", activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences sharedName= activity.getSharedPreferences("name_search", activity.MODE_PRIVATE);
+        SharedPreferences.Editor nameEditor = sharedName.edit();
+        SharedPreferences sharedSearch = activity.getSharedPreferences("search_on", activity.MODE_PRIVATE);
+        SharedPreferences.Editor searchEditor = sharedSearch.edit();
 
         //setName(this, );
         if (viewId == R.id.SubmitButton) {
-            // When they press submit, save the string in shared preferences and find matches in database
-            //editor.putString("name", name);
-            editor.commit();
+//             When they press submit, save the string in shared preferences and find matches in database
+            nameEditor.putString(getString(R.string.searched_name), nameInput.getText().toString().toLowerCase(Locale.ROOT));
+            nameEditor.commit();
+            searchEditor.putString(getString(R.string.searched_on), "name");
+            searchEditor.commit();
+
+            startActivity(new Intent(appContext, ResultsActivity.class));
         } else {
             Timber.e("Invalid button click");
         }
     }
     // Used https://stackoverflow.com/questions/31090558/how-to-save-user-input-from-edittext-to-a-variable-to-be-used-on-a-different-act
-    public static void setName(Context context, String name) {
-        SharedPreferences prefs = context.getSharedPreferences("myAppPackage", 0);
-        SharedPreferences.Editor editor = prefs.edit();
-
-    }
+//    public static void setName(Context context, String name) {
+//        SharedPreferences prefs = context.getSharedPreferences("myAppPackage", 0);
+//        SharedPreferences.Editor editor = prefs.edit();
+//
+//    }
 }

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Picked">
         <activity
+            android:name=".ResultsActivity"
+            android:exported="true" />
+        <activity
             android:name=".LocationActivity"
             android:exported="true" />
         <activity
@@ -44,10 +47,6 @@
         <activity android:name=".LocationSearchActivity" />
         <activity android:name=".TypeSearchActivity" />
         <activity android:name=".SearchActivity" />
-
-<!--        <service-->
-<!--            android:name=".LocationActivity"-->
-<!--            android:foregroundServiceType="location" />-->
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
