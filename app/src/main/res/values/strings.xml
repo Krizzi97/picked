@@ -49,6 +49,8 @@
     <string name="Seeds">seed</string>
     <string name="Flower">flower</string>
 
+    <string name="part_search_description">What type of plant are you looking for?</string>
+
     <!--  saved  -->
     <string name="selected_region"> </string>
     <string name="selected_area"> </string>
@@ -58,6 +60,7 @@
     <string name="found_location"> </string>
     <string name="last_post"> </string>
     <string name="title_activity_edit_posts">EditPostsActivity</string>
+    <string name="name_search"> </string>
 
     <!--    https://github.com/android/permissions-samples/blob/main/RuntimePermissionsBasic/Application/src/main/res/values/strings.xml -->
     <string name="location_unavailable"><b>Location could not be accessed.</b>\nThis occurs when the location is not available (for example it is already in use) or if the system has denied access (for example when location access has been disabled).</string>

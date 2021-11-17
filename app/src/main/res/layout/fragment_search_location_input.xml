@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".NameSearchFragment">
+    tools:context=".LocationSearchFragment">
 
     <TextView
-        android:id="@+id/enter_name"
+        android:id="@+id/enter_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand_bold"
-        android:text="Name Search"
+        android:text="Enter location"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="36sp"
@@ -25,21 +25,21 @@
 
     <EditText
         android:id="@+id/txt_box"
-        android:text="Enter plant name"
-        android:textAlignment="center"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/generic_button2"
         android:fontFamily="@font/quicksand_bold"
         android:inputType="text"
+        android:text="City, State"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_name" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_location" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/SubmitButton"

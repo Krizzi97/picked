@@ -29,14 +29,15 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        // Inflate the layout for this fragment
+         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        Button name = view.findViewById(R.id.name_button);
-        name.setOnClickListener(this);
-        Button location = view.findViewById(R.id.location_button);
-        location.setOnClickListener(this);
-        Button type = view.findViewById(R.id.type_button);
-        type.setOnClickListener(this);
+        Button nameButton = view.findViewById(R.id.name_button);
+        nameButton.setOnClickListener(this);
+        Button locationButton = view.findViewById(R.id.location_button);
+        locationButton.setOnClickListener(this);
+        Button typeButton = view.findViewById(R.id.type_button);
+        typeButton.setOnClickListener(this);
 
         return view;
     }
@@ -47,14 +48,14 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
-        if (viewId == R.id.name_search) {
+        if (viewId == R.id.name_button)
             startActivity(new Intent(appContext, NameSearchActivity.class));
-        } else if (viewId == R.id.location_search) {
+        else if (viewId == R.id.location_button)
             startActivity(new Intent(appContext, LocationSearchActivity.class));
-        } else if (viewId == R.id.type_search) {
+        else if (viewId == R.id.type_button)
             startActivity(new Intent(appContext, TypeSearchActivity.class));
-        } else {
+        else
             Timber.e("Invalid button click");
-        }
+
     }
 }
