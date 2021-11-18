@@ -62,6 +62,7 @@
     <string name="title_activity_edit_posts">EditPostsActivity</string>
     <string name="searched_name"> </string>
     <string name="searched_on"> </string>
+    <string name="location_search" > </string>
 
     <!--    https://github.com/android/permissions-samples/blob/main/RuntimePermissionsBasic/Application/src/main/res/values/strings.xml -->
     <string name="location_unavailable"><b>Location could not be accessed.</b>\nThis occurs when the location is not available (for example it is already in use) or if the system has denied access (for example when location access has been disabled).</string>

@@ -52,6 +52,7 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".LocationSearchCurrentActivity" />
         <activity android:name=".LocationSearchInputActivity" />
+        <activity android:name=".LocationResultsActivity" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

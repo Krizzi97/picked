@@ -84,7 +84,6 @@ public class LocationSearchCurrentActivity extends AppCompatActivity
     private void GetLocation() {
         // BEGIN_INCLUDE(startLocation)
         // Check if the location permission has been granted
-        Timber.d("STARTING GET LOCATION RN");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             // Permission is already available, start location preview
@@ -108,6 +107,8 @@ public class LocationSearchCurrentActivity extends AppCompatActivity
                             geocoder = new Geocoder(LocationSearchCurrentActivity.this, Locale.getDefault());
 
                             foundLocation = location;
+                            Timber.d("HERE IS YOUR LOCATION" + String.valueOf(foundLocation.toString()));
+
                             try {
                                 searchAddresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                                 Activity activity = LocationSearchCurrentActivity.this;
@@ -116,17 +117,17 @@ public class LocationSearchCurrentActivity extends AppCompatActivity
                                 String address = searchAddresses.get(0).getLocality() + "," + searchAddresses.get(0).getAdminArea() + "," + searchAddresses.get(0).getPostalCode();
                                 editor.putString(getString(R.string.found_location), address);
                                 editor.apply();
-                                Timber.d("HERE IS YOUR ADDRESS" + String.valueOf(searchAddresses.get(0)));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
+                        Timber.d("ERROR: NO LOCATION FOUND");
                     }
                 }
             };
             LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest, mLocationCallback, null);
 
-            //startCreateNewPlantEntry();
+            goToResultsActivity();
         } else {
             // Permission is missing and must be requested.
             requestLocationPermission();
@@ -164,8 +165,8 @@ public class LocationSearchCurrentActivity extends AppCompatActivity
         }
     }
 
-    private void startCreateNewPlantEntry() {
-        Intent intent = new Intent(this, CreateNewPlantEntryActivity.class);
+    private void goToResultsActivity() {
+        Intent intent = new Intent(this, LocationResultsActivity.class);
         startActivity(intent);
     }
 }
