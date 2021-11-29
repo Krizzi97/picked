@@ -93,7 +93,7 @@ public class LocationActivity extends AppCompatActivity
             LocationRequest mLocationRequest = LocationRequest.create();
             mLocationRequest.setInterval(60000);
             mLocationRequest.setFastestInterval(5000);
-            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
             LocationCallback mLocationCallback = new LocationCallback() {
                 @Override
                 public void onLocationResult(LocationResult locationResult) {
