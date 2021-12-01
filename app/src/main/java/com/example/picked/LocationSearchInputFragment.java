@@ -47,7 +47,7 @@ public class LocationSearchInputFragment extends Fragment implements View.OnClic
         if (viewId == R.id.SubmitButton) {
             nameEditor.putString(getString(R.string.location_search_input), locationInput.getText().toString().toLowerCase(Locale.ROOT));
             nameEditor.commit();
-            startActivity(new Intent(appContext, LocationResultsCurrentActivity.class));
+            startActivity(new Intent(appContext, LocationResultsInputActivity.class));
         } else {
             Timber.e("Invalid button click");
         }

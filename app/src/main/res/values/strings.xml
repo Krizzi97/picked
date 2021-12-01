@@ -51,6 +51,7 @@
 
     <string name="part_search_description">What type of plant are you looking for?</string>
     <string name="no_connection_warning">ERROR: No internet connection detected! Please check your connection and try again.</string>
+    <string name="wrong_location_format">ERROR: Please follow the given format "City, State"!</string>
 
     <!--  saved  -->
     <string name="selected_region"> </string>

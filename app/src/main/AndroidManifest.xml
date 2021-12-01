@@ -52,7 +52,8 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".LocationSearchCurrentActivity" />
         <activity android:name=".LocationSearchInputActivity" />
-        <activity android:name=".LocationResultsCurrentActivity" />
+        <activity android:name=".LocationResultsCurrentActivity"/>
+        <activity android:name=".LocationResultsInputActivity"/>
 
     </application>
 

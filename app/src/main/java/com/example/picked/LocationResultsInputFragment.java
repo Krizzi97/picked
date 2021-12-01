@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -104,7 +105,13 @@ public class LocationResultsInputFragment extends Fragment implements View.OnCli
                 int count = 0;
                 if (snapshot.hasChildren()) {
                     for (DataSnapshot subSnap : snapshot.getChildren()) {
-                        if (subSnap.child("location").child("city").getValue().toString().equalsIgnoreCase(cityState[0]) &&
+                        if (cityState.length < 2)
+                        {
+                            Snackbar.make(v, R.string.wrong_location_format,
+                                    Snackbar.LENGTH_SHORT)
+                                    .show();
+                        }
+                        else if (subSnap.child("location").child("city").getValue().toString().equalsIgnoreCase(cityState[0]) &&
                                 subSnap.child("location").child("state").getValue().toString().equalsIgnoreCase(cityState[1])) {
                             if (count < plant_cards.size()) {
                                 plant_cards.get(count).setVisibility(View.VISIBLE);
