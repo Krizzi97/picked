@@ -2,9 +2,9 @@ package com.example.picked;
 
 import androidx.fragment.app.Fragment;
 
-public class LocationResultsActivity extends SingleFragmentActivity {
+public class LocationResultsCurrentActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
-        return new LocationResultsFragment();
+        return new LocationResultsCurrentFragment();
     }
 }

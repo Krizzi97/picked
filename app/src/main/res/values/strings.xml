@@ -50,6 +50,7 @@
     <string name="Flower">flower</string>
 
     <string name="part_search_description">What type of plant are you looking for?</string>
+    <string name="no_connection_warning">ERROR: No internet connection detected! Please check your connection and try again.</string>
 
     <!--  saved  -->
     <string name="selected_region"> </string>
@@ -62,7 +63,9 @@
     <string name="title_activity_edit_posts">EditPostsActivity</string>
     <string name="searched_name"> </string>
     <string name="searched_on"> </string>
-    <string name="location_search" > </string>
+    <string name="location_search_current" > </string>
+    <string name="location_search_input" > </string>
+
 
     <!--    https://github.com/android/permissions-samples/blob/main/RuntimePermissionsBasic/Application/src/main/res/values/strings.xml -->
     <string name="location_unavailable"><b>Location could not be accessed.</b>\nThis occurs when the location is not available (for example it is already in use) or if the system has denied access (for example when location access has been disabled).</string>

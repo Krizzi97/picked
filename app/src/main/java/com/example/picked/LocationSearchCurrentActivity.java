@@ -14,20 +14,17 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.Executor;
 
 import timber.log.Timber;
 
@@ -112,10 +109,10 @@ public class LocationSearchCurrentActivity extends AppCompatActivity
                             try {
                                 searchAddresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                                 Activity activity = LocationSearchCurrentActivity.this;
-                                SharedPreferences locationPref = activity.getSharedPreferences("location", activity.MODE_PRIVATE);
+                                SharedPreferences locationPref = activity.getSharedPreferences("current_location", activity.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = locationPref.edit();
                                 String address = searchAddresses.get(0).getLocality() + "," + searchAddresses.get(0).getAdminArea() + "," + searchAddresses.get(0).getPostalCode();
-                                editor.putString(getString(R.string.found_location), address);
+                                editor.putString(getString(R.string.location_search_current), address);
                                 editor.apply();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -166,7 +163,7 @@ public class LocationSearchCurrentActivity extends AppCompatActivity
     }
 
     private void goToResultsActivity() {
-        Intent intent = new Intent(this, LocationResultsActivity.class);
+        Intent intent = new Intent(this, LocationResultsCurrentActivity.class);
         startActivity(intent);
     }
 }

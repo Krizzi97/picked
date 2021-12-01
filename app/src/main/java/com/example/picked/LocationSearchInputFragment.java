@@ -41,13 +41,13 @@ public class LocationSearchInputFragment extends Fragment implements View.OnClic
         final Context appContext = activity.getApplicationContext();
         final int viewId = view.getId();
 
-        SharedPreferences sharedName= activity.getSharedPreferences("location_search", activity.MODE_PRIVATE);
+        SharedPreferences sharedName= activity.getSharedPreferences("input_location", activity.MODE_PRIVATE);
         SharedPreferences.Editor nameEditor = sharedName.edit();
 
         if (viewId == R.id.SubmitButton) {
-            nameEditor.putString(getString(R.string.location_search), locationInput.getText().toString().toLowerCase(Locale.ROOT));
+            nameEditor.putString(getString(R.string.location_search_input), locationInput.getText().toString().toLowerCase(Locale.ROOT));
             nameEditor.commit();
-            startActivity(new Intent(appContext, LocationResultsActivity.class));
+            startActivity(new Intent(appContext, LocationResultsCurrentActivity.class));
         } else {
             Timber.e("Invalid button click");
         }

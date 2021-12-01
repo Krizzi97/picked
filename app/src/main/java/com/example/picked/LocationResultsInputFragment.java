@@ -21,14 +21,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import timber.log.Timber;
 
-public class LocationResultsFragment extends Fragment implements View.OnClickListener{
+public class LocationResultsInputFragment extends Fragment implements View.OnClickListener{
 
     DatabaseReference reference;
     String location_search;
@@ -95,10 +93,10 @@ public class LocationResultsFragment extends Fragment implements View.OnClickLis
 
         matches = new ArrayList<>();
 
-        SharedPreferences locatePref = activity.getSharedPreferences("location_search", activity.MODE_PRIVATE);
-        location_search = locatePref.getString(getString(R.string.selected_part), "none selected");
+        SharedPreferences locatePref = activity.getSharedPreferences("input_location", activity.MODE_PRIVATE);
+        location_search = locatePref.getString(getString(R.string.location_search_input), "none selected");
 
-        cityState = location_search.split(",");
+        cityState = location_search.split(", ");
         reference = FirebaseDatabase.getInstance().getReference().child("savedPlant");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
